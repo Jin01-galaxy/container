@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,35 +17,33 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  final TapGestureRecognizer _gestureRecognizer = TapGestureRecognizer()
+    ..onTap = () {
+      debugPrint('Hello World');
+    };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-      child: Text(
-        'Hello World',
-        style: TextStyle(
-            fontSize: 50,
-            color: Colors.indigo,
-            fontWeight: FontWeight.bold,
-            // backgroundColor: Colors.indigo,
-            decoration: TextDecoration.combine([
-              TextDecoration.underline,
-              TextDecoration.overline,
-            ]),
-            decorationThickness: 2.0,
-            decorationColor: Colors.pinkAccent,
-            decorationStyle: TextDecorationStyle.wavy,
-            letterSpacing: 2.0,
-            wordSpacing: 24.0,
-            shadows: [
-              Shadow(
-                color: Colors.red,
-                blurRadius: 5.0,
-                offset: Offset(4, 1),
-              )
-            ],
-            ),
-      ),
-    ));
+      body: Container(
+        child: Center(
+          child: RichText(
+            text: TextSpan(
+                text: "Share",
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 20,
+                ),
+                children: [
+                  TextSpan(
+                      text: 'Register',
+                      style: TextStyle(color: Colors.red),
+                      recognizer: _gestureRecognizer),
+                ]),
+                //   WidgetSpan(child: Icon(Icons.share))
+                // ]
+          ),
+        )
+      )
+    );
   }
 }
