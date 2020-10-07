@@ -15,54 +15,36 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final ScrollController controller = ScrollController();
-
-  List<Widget> layoutChildren(double boxSide) {
-    return [
-      Container(
-        width: boxSide,
-        height: boxSide,
-        color: Colors.greenAccent,
-        alignment: Alignment.center,
-        child: Text('Box1',style: TextStyle(color: Colors.indigo,fontSize: 50),),
-      ),
-      Container(
-        width: boxSide,
-        height: boxSide,
-        color: Colors.orangeAccent,
-        alignment: Alignment.center,
-        child: Text('Box2',style: TextStyle(color: Colors.indigo,fontSize: 50),),
-      ),
-    ];
-  }
-
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    Orientation orientation = MediaQuery.of(context).orientation;
-    double boxSide = size.shortestSide - 50;
     return Scaffold(
-      body: Center(child: Builder(builder: (context) {
-        if (orientation.index == Orientation.landscape.index) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: layoutChildren(boxSide),
-          );
-        } else {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: layoutChildren(boxSide),
-          );
-        }
-      }),
+        body: Center(
+      child: Text(
+        'Hello World',
+        style: TextStyle(
+            fontSize: 50,
+            color: Colors.indigo,
+            fontWeight: FontWeight.bold,
+            // backgroundColor: Colors.indigo,
+            decoration: TextDecoration.combine([
+              TextDecoration.underline,
+              TextDecoration.overline,
+            ]),
+            decorationThickness: 2.0,
+            decorationColor: Colors.pinkAccent,
+            decorationStyle: TextDecorationStyle.wavy,
+            letterSpacing: 2.0,
+            wordSpacing: 24.0,
+            shadows: [
+              Shadow(
+                color: Colors.red,
+                blurRadius: 5.0,
+                offset: Offset(4, 1),
+              )
+            ],
+            ),
       ),
-    );
+    ));
   }
 }
-
